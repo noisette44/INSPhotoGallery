@@ -150,7 +150,7 @@ open class INSPhotosViewController: UIViewController, UIPageViewControllerDataSo
         let textColor = view.tintColor ?? UIColor.white
         if let overlayView = overlayView as? INSPhotosOverlayView {
             overlayView.photosViewController = self
-            overlayView.titleTextAttributes = [NSAttributedStringKey.foregroundColor: textColor]
+          overlayView.titleTextAttributes = [NSAttributedString.Key.foregroundColor: textColor]
         }
     }
     
@@ -165,10 +165,10 @@ open class INSPhotosViewController: UIViewController, UIPageViewControllerDataSo
         pageViewController.view.addGestureRecognizer(panGestureRecognizer)
         pageViewController.view.addGestureRecognizer(singleTapGestureRecognizer)
         
-        addChildViewController(pageViewController)
+      addChild(pageViewController)
         view.addSubview(pageViewController.view)
         pageViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        pageViewController.didMove(toParentViewController: self)
+      pageViewController.didMove(toParent: self)
         
         setupOverlayView()
     }
@@ -194,7 +194,7 @@ open class INSPhotosViewController: UIViewController, UIPageViewControllerDataSo
     }
     
     private func setupPageViewControllerWithInitialPhoto(_ initialPhoto: INSPhotoViewable? = nil) {
-        pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey: 16.0])
+      pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewController.OptionsKey.interPageSpacing: 16.0])
         pageViewController.view.backgroundColor = UIColor.clear
         pageViewController.delegate = self
         pageViewController.dataSource = self
